@@ -1,0 +1,10 @@
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+[Service]
+User=lera
+WorkingDirectory=/home/lera/dprojx
+ExecStart=/usr/bin/gunicorn3 \
+          --bind unix:/run/gunicorn.sock \
+          dprojx.wsgi:application
