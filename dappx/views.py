@@ -64,22 +64,13 @@ def user_login(request):
         return render(request, 'dappx/login.html', {})
 
 
-'''
 @login_required
 def verify(request):
    if request.method == 'GET':
-     result = subprocess.run(['python3', '/home/lera/verification_person/sec.py'], stdout=subprocess.PIPE)
-     if result.stdout.decode('utf-8').find('Authentication Successfull'):
-       return HttpResponse("You are verifyed successfully!")
-     else:
-       return HttpResponse("You aren't verify!")
-'''
+     path = os.environ['PROJECT_HOME']
+     path = path + '/verification_person/verification_id.py'
 
-@login_required
-def verify(request):
-   if request.method == 'GET':
-
-     result = subprocess.run(['python3', '/home/lera/verification_person/verification_id.py'], stdout=subprocess.PIPE)
+     result = subprocess.run(['python3', path], stdout=subprocess.PIPE)
      if result.stdout.decode('utf-8').find('Authentication Successfull'):
        res_string = {'verify': 1}
        return HttpResponse(json.dumps(res_string), content_type="application/json")
@@ -92,13 +83,18 @@ def verify(request):
 def register_voting(request):
    if request.method == 'POST':
 
+     path = os.environ['PROJECT_HOME']
+     path_for_file = path + 'base64.txt'
+     path = path + '/verification_person/registration_id.py'
+
      body_unicode = request.body.decode('utf-8') 
-     file1 = open("/home/lera/base64.txt", "w")
+     file1 = open(path_for_file, "w")
      file1.writelines(str(body_unicode))
      file1.close() 
-     result = subprocess.run(['python3', '/home/lera/verification_person/registration_id.py'], stdout=subprocess.PIPE)
+     result = subprocess.run(['python3', path], stdout=subprocess.PIPE)
      if result.stdout.decode('utf-8').find('registered successfully\n'):
-        os.system('rm /home/lera/base64.txt')
+
+        #os.system('rm /home/lera/base64.txt')
         res_string = {'register': 1}
         return HttpResponse(json.dumps(res_string), content_type="application/json")
      else:
