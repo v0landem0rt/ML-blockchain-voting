@@ -6,5 +6,7 @@ To use this project you need:
 you should setup this model at __$PROJECT_HOME__ directory. 
 + Then you need to do : __export PROJECT_HOME=/path/to/model__
 + __pip3 install -r requirements.txt__
++ You need to setup ssl cert, because brovser does not allowed js video stream without https connection
++ To serve this app I used nginx-gunicorn binding 
 
 + blockchain(in work)
