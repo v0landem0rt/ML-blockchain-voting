@@ -2,7 +2,7 @@
 Here is example of a voting application that verifies a voter face, using js video capture and machine learning model, then sends voting results to the blockchain.  This is a django app vith registration and frontend.  
 ## Requirements for project
 To use this project you need:
-+ install postgres and django framevork
++ install postgres and django framevork, python3, install nginx and gunicorn3
 + install ML model(this model, which verify face of voters) -- https://github.com/efffna/verification_person
 you should setup this model at __$PROJECT_HOME__ directory. 
 + Then you need to do : __export PROJECT_HOME=/path__
