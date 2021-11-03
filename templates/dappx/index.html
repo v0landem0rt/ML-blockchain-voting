@@ -65,7 +65,7 @@ return a;
 
 
 btn3.onclick = function (evt) {
-postData('https://cloudveritas.com/dappx/verify/')
+postData('http://127.0.0.1:8000/dappx/verify/')
   .then((response) => {
     //console.log(response);
     text = JSON.stringify(response);
@@ -89,7 +89,7 @@ btn2.onclick = function (evt) {
     headers: {'X-CSRFToken': csrftoken},
     body: fileInput,
   };
-  fetch('https://cloudveritas.com/dappx/register_voting/', options).then((response) => {
+  fetch('http://127.0.0.1:8000/dappx/register_voting/', options).then((response) => {
    // console.log(response);
   });
 }

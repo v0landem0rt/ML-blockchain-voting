@@ -7,7 +7,6 @@ app_name = 'dappx'
 urlpatterns=[
     path('register/',views.register,name='register'),
     path('user_login/',views.user_login,name='user_login'),
-    #path('user_verification/',views.user_verification,name='user_verification'),
     path('verify/',views.verify,name='verify'),
     path('register_voting/',views.register_voting,name='register_voting'),
 ]
